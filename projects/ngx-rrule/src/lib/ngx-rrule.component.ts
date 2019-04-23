@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'ngx-ngx-rrule',
+  selector: 'ngx-rrule',
   template: `
     <p>
       ngx-rrule works!
