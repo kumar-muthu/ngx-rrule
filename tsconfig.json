@@ -17,6 +17,14 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "ngx-rrule": [
+        "dist/ngx-rrule"
+      ],
+      "ngx-rrule/*": [
+        "dist/ngx-rrule/*"
+      ]
+    }
   }
 }
