@@ -2,11 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'ngx-rrule',
-  template: `
-    <p>
-      ngx-rrule works!
-    </p>
-  `,
+  templateUrl: './ngx-rrule.component.html',
   styles: []
 })
 export class NgxRruleComponent implements OnInit {

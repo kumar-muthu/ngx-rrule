@@ -58,7 +58,7 @@
               "projects/tester/src/assets"
             ],
             "styles": [
-              "projects/tester/src/styles.css"
+              "projects/tester/src/styles.scss"
             ],
             "scripts": [],
             "es5BrowserSupport": true
