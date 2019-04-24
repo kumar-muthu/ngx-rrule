@@ -16,6 +16,8 @@ export class RepeatComponent implements OnInit, ControlValueAccessor {
 
   ngOnInit() {
     this.form = this.formBuilder.group({
+      yearly: {},
+      monthly: {},
       weekly: {},
       hourly: {},
       daily: {},
