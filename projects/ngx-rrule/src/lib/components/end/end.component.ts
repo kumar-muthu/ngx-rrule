@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./end.component.css']
 })
 export class EndComponent implements OnInit {
-
+  public  frequency = 'Never';
   constructor() { }
 
   ngOnInit() {

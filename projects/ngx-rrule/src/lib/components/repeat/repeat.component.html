@@ -1,1 +1,24 @@
-<ngx-weekly></ngx-weekly>
+
+
+<div class="row">
+  <div class="col-md-2 text-sm-right">
+    <strong>
+      Repeat
+    </strong>
+  </div>
+  <div class="col-md-10">
+
+    <select [(ngModel)]="frequency" class="form-control col-md-2">
+      <option value="Yearly">Yearly</option>
+      <option value="Monthly">Monthly</option>
+      <option value="Weekly">Weekly</option>
+      <option value="Daily">Daily</option>
+      <option value="Hourly">Hourly</option>
+    </select>
+    <form [formGroup]="form">
+      <ngx-weekly *ngIf="frequency === 'Weekly'" formControlName="weekly" (onChange)="onFormChange()"></ngx-weekly>
+      <ngx-hourly *ngIf="frequency === 'Hourly'" formControlName="hourly" (onChange)="onFormChange()"></ngx-hourly>
+      <ngx-daily *ngIf="frequency === 'Daily'" formControlName="daily" (onChange)="onFormChange()"></ngx-daily>
+    </form>
+  </div>
+</div>

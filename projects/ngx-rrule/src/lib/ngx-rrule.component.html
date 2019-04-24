@@ -1,6 +1,11 @@
-<div class="p-1">
+<div class="px-0 pt-3 border rounded">
+  <form [formGroup]="form">
+    <ngx-start></ngx-start>
+    <hr>
+    <ngx-repeat formControlName="repeat" (onChange)="onFormChange()"></ngx-repeat>
+    <hr>
+    <ngx-end></ngx-end>
+    <hr>
+  </form>
 
-  <ngx-start></ngx-start>
-  <ngx-repeat></ngx-repeat>
-  <ngx-end></ngx-end>
 </div>

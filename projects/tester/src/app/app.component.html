@@ -1,1 +1,11 @@
-<ngx-rrule></ngx-rrule>
+<div class="container">
+  <form [formGroup]="form">
+    <ngx-rrule formControlName="testRule"></ngx-rrule>
+  </form>
+
+
+  <hr>
+
+  {{ form.value | json}}
+
+</div>

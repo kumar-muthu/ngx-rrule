@@ -1,22 +1,21 @@
 <form [formGroup]="weeklyForm">
-  <div className="form-group row d-flex align-items-sm-center">
-    <div className="col-sm-1 offset-sm-2">
+  <div class="form-group row mt-2 mb-2">
+    <div class="col-sm-1">
       every
     </div>
-    <div className="col-sm-3">
-      <input formControlName="weeklyInterval"
+    <div class="col-sm-3">
+      <input formControlName="weeklyInterval" (change)="onFormChange()"
              aria-label="Repeat weekly interval"
-             className="form-control"
-      />
+             class="form-control"/>
     </div>
-    <div className="col-sm-1">
+    <div class="col-sm-1">
       week(s)
     </div>
   </div>
 
   <div class="btn-group btn-group-toggle">
     <label class="btn-primary" ngbButtonLabel  *ngFor="let day of days">
-      <input type="checkbox" [formControlName]="day.toLowerCase()" ngbButton> {{day}}
+      <input type="checkbox" [formControlName]="day.toLowerCase()" ngbButton (change)="onFormChange()"> {{day}}
     </label>
   </div>
 </form>

@@ -1,6 +1,7 @@
-import {Component, OnInit, forwardRef, EventEmitter, Output} from '@angular/core';
+import {Component, OnInit, Output, forwardRef, EventEmitter} from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'ngx-weekly',
@@ -9,8 +10,13 @@ import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
   providers: [{provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => WeeklyComponent), multi: true}]
 })
 export class WeeklyComponent implements OnInit, ControlValueAccessor {
-  public weeklyForm: FormGroup;
   @Output() onChange = new EventEmitter();
+  public weeklyForm: FormGroup;
+  private propagateChange;
+  public  value = {
+    interval: 0,
+    days: []
+  };
 
   public days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
   constructor(private formBuilder: FormBuilder) {}
@@ -38,11 +44,10 @@ export class WeeklyComponent implements OnInit, ControlValueAccessor {
   registerOnTouched(fn: any): void {
   }
 
-  propagateChange = (_: any) => {
-  }
-
-  onFormchange = () => {
-    this.propagateChange('');
-    this.onChange.emit('');
+  onFormChange = () => {
+    this.value.interval = this.weeklyForm.value.weeklyInterval;
+    this.value.days = _.pickBy(this.weeklyForm.value, r => r === true);
+    this.propagateChange(this.value);
+    this.onChange.emit();
   }
 }

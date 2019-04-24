@@ -1,3 +1,15 @@
-<p>
-  daily works!
-</p>
+<form [formGroup]="form">
+  <div class="form-group row mt-2 mb-2">
+    <div class="col-sm-1">
+      every
+    </div>
+    <div class="col-sm-3">
+      <input formControlName="interval" (change)="onFormChange()"
+             aria-label="Repeat interval"
+             class="form-control"/>
+    </div>
+    <div class="col-sm-1">
+      day(s)
+    </div>
+  </div>
+</form>
