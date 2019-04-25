@@ -5,7 +5,7 @@
         <input type="radio" aria-label="Repeat yearly on" value="on" formControlName="mode"></div>
       <div class="col-sm-1">on</div>
       <div class="col-sm-2">
-        <select formControlName="onMonth" aria-label="Repeat yearly on month" class="form-control"  (change)="onFormChange()"  [attr.disabled]="form.value.mode !== 'on'? '' : null">
+        <select formControlName="onMonth" aria-label="Repeat yearly on month" class="form-control" [attr.disabled]="form.value.mode !== 'on'? '' : null">
         <option value="Jan">Jan</option>
         <option value="Feb">Feb</option>
         <option value="Mar">Mar</option>
@@ -20,8 +20,8 @@
         <option value="Dec">Dec</option>
       </select></div>
       <div class="col-sm-2">
-        <select  formControlName="onDay" aria-label="Repeat yearly on a day" class="form-control"  (change)="onFormChange()"  [attr.disabled]="form.value.mode !== 'on'? '' : null">
-        <option *ngFor="let val of range(1, 32)" [value]="val">{{val}}</option>
+        <select  formControlName="onDay" aria-label="Repeat yearly on a day" class="form-control" [attr.disabled]="form.value.mode !== 'on'? '' : null">
+        <option *ngFor="let val of range(1, 32)" [value]="val.toString()">{{val}}</option>
       </select></div>
     </div>
     <div class="form-group row d-flex align-items-sm-center opacity-50">
@@ -30,7 +30,7 @@
       </div>
       <div class="col-sm-1">on the</div>
       <div class="col-sm-2">
-        <select  formControlName="onTheWhich" aria-label="Repeat yearly on the which" class="form-control"  (change)="onFormChange()"   [attr.disabled]="form.value.mode === 'on'? '' : null">
+        <select  formControlName="onTheWhich" aria-label="Repeat yearly on the which" class="form-control"  [attr.disabled]="form.value.mode === 'on'? '' : null">
         <option value="First">First</option>
         <option value="Second">Second</option>
         <option value="Third">Third</option>
@@ -38,7 +38,7 @@
         <option value="Last">Last</option>
       </select></div>
       <div class="col-sm-3">
-        <select formControlName="onTheDay" aria-label="Repeat yearly on the day" class="form-control"  (change)="onFormChange()"  [attr.disabled]="form.value.mode === 'on'? '' : null">
+        <select formControlName="onTheDay" aria-label="Repeat yearly on the day" class="form-control"  [attr.disabled]="form.value.mode === 'on'? '' : null">
         <option value="Monday">Monday</option>
         <option value="Tuesday">Tuesday</option>
         <option value="Wednesday">Wednesday</option>
@@ -52,7 +52,7 @@
       </select></div>
       <div class="col-sm-1">of</div>
       <div class="col-sm-2">
-        <select formControlName="onTheMonth" aria-label="Repeat yearly on the month" class="form-control"  (change)="onFormChange()"  [attr.disabled]="form.value.mode === 'on'? '' : null">
+        <select formControlName="onTheMonth" aria-label="Repeat yearly on the month" class="form-control"  [attr.disabled]="form.value.mode === 'on'? '' : null">
         <option value="Jan">Jan</option>
         <option value="Feb">Feb</option>
         <option value="Mar">Mar</option>

@@ -24,6 +24,12 @@ export class YearlyComponent implements OnInit, ControlValueAccessor {
       onTheDay: 'Monday',
       onTheMonth: 'Jan'
     });
+
+    this.form.valueChanges.subscribe(() => {
+      this.onFormChange();
+    });
+
+    this.onFormChange();
   }
 
   writeValue = (input: any): void => {

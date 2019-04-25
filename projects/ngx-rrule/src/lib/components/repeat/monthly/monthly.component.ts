@@ -24,6 +24,10 @@ export class MonthlyComponent implements OnInit, ControlValueAccessor {
       onTheWhich: 'First',
       onTheDay: 'Monday'
     });
+
+    this.form.valueChanges.subscribe(() => {
+      this.onFormChange();
+    });
   }
 
   writeValue = (input: any): void => {
@@ -42,7 +46,6 @@ export class MonthlyComponent implements OnInit, ControlValueAccessor {
   }
 
   radioChange = (event) => {
-    console.log(event);
     if (event.target.value === 'on the') {
       this.form.patchValue({
         onDay: '',

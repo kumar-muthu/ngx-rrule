@@ -8,7 +8,7 @@
   </div>
   <div class="col-md-10">
    <div class="form-group">
-     <select [(ngModel)]="frequency" (change)="onOptionChange()" class="form-control col-md-2">
+     <select [(ngModel)]="frequency" (change)="onOptionChange()" class="form-control col-md-3">
        <option value="Yearly">Yearly</option>
        <option value="Monthly">Monthly</option>
        <option value="Weekly">Weekly</option>
@@ -17,11 +17,11 @@
      </select>
    </div>
     <form [formGroup]="form">
-      <ngx-yearly *ngIf="frequency === 'Yearly'" formControlName="yearly" (onChange)="onFormChange()"></ngx-yearly>
-      <ngx-monthly *ngIf="frequency === 'Monthly'" formControlName="monthly" (onChange)="onFormChange()"></ngx-monthly>
-      <ngx-weekly *ngIf="frequency === 'Weekly'" formControlName="weekly" (onChange)="onFormChange()"></ngx-weekly>
-      <ngx-hourly *ngIf="frequency === 'Hourly'" formControlName="hourly" (onChange)="onFormChange()"></ngx-hourly>
-      <ngx-daily *ngIf="frequency === 'Daily'" formControlName="daily" (onChange)="onFormChange()"></ngx-daily>
+      <ngx-yearly *ngIf="frequency === 'Yearly'" formControlName="yearly"></ngx-yearly>
+      <ngx-monthly *ngIf="frequency === 'Monthly'" formControlName="monthly"></ngx-monthly>
+      <ngx-weekly *ngIf="frequency === 'Weekly'" formControlName="weekly"></ngx-weekly>
+      <ngx-hourly *ngIf="frequency === 'Hourly'" formControlName="hourly"></ngx-hourly>
+      <ngx-daily *ngIf="frequency === 'Daily'" formControlName="daily"></ngx-daily>
     </form>
   </div>
 </div>

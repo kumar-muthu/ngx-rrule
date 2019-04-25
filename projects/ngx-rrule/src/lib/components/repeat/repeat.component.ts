@@ -18,9 +18,13 @@ export class RepeatComponent implements OnInit, ControlValueAccessor {
     this.form = this.formBuilder.group({
       yearly: {},
       monthly: {},
-      weekly: {},
+      weekly: {weeklyInterval: 1},
       hourly: {},
       daily: {},
+    });
+
+    this.form.valueChanges.subscribe(() => {
+      this.onFormChange();
     });
   }
 

@@ -1,5 +1,6 @@
 import {Component, forwardRef, OnInit} from '@angular/core';
 import {ControlValueAccessor, FormBuilder, FormGroup, NG_VALUE_ACCESSOR} from '@angular/forms';
+import {NgxRruleService} from './ngx-rrule.service';
 
 @Component({
   selector: 'ngx-rrule',
@@ -10,12 +11,16 @@ import {ControlValueAccessor, FormBuilder, FormGroup, NG_VALUE_ACCESSOR} from '@
 export class NgxRruleComponent implements OnInit, ControlValueAccessor {
   public form: FormGroup;
   private propagateChange;
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(private formBuilder: FormBuilder,
+              private  service: NgxRruleService) {}
 
   ngOnInit() {
     this.form = this.formBuilder.group({
+      start: {},
       repeat: {},
+      end: {},
     });
+    this.form.valueChanges.subscribe(() => this.onFormChange());
   }
 
   writeValue = (input: any): void => {
@@ -29,6 +34,10 @@ export class NgxRruleComponent implements OnInit, ControlValueAccessor {
   }
 
   onFormChange = () => {
-    this.propagateChange(this.form.value);
+   // const str = this.service.computeRRule(this.form.value);
+    this.propagateChange({
+      raw: this.form.value,
+      // str
+    });
   }
 }

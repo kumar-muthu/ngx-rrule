@@ -4,7 +4,7 @@
       every
     </div>
     <div class="col-sm-3">
-      <input formControlName="weeklyInterval" (change)="onFormChange()"
+      <input formControlName="weeklyInterval"
              aria-label="Repeat weekly interval"
              class="form-control"/>
     </div>
@@ -15,7 +15,7 @@
 
   <div class="btn-group btn-group-toggle">
     <label class="btn-primary" ngbButtonLabel  *ngFor="let day of days">
-      <input type="checkbox" [formControlName]="day.toLowerCase()" ngbButton (change)="onFormChange()"> {{day}}
+      <input type="checkbox" [formControlName]="day.toLowerCase()" ngbButton> {{day}}
     </label>
   </div>
 </form>

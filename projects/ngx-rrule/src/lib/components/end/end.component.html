@@ -1,46 +1,44 @@
 
+<form [formGroup]="form">
+  <div class="row">
+    <div class="col-md-2 text-sm-right">
+      <strong>
+        End
+      </strong>
+    </div>
+    <div class="col-md-10">
+      <div class="row">
 
-<div class="row">
-  <div class="col-md-2 text-sm-right">
-    <strong>
-      End
-    </strong>
-  </div>
-  <div class="col-md-10">
-    <div class="row">
+        <div class="col-sm-3 mr-2">
+          <select  formControlName="frequency" class="form-control">
+            <option value="Never">Never</option>
+            <option value="After">After</option>
+            <option value="On date">On date</option>
+          </select>
+        </div>
 
-      <div class="col-sm-3 mr-2">
-        <select  [(ngModel)]="frequency" class="form-control">
-          <option value="Never">Never</option>
-          <option value="After">After</option>
-          <option value="On date">On date</option>
-        </select>
-      </div>
-
-      <div class="col-sm-4" *ngIf="frequency === 'After'">
-        <div class="form-group m-0 row d-flex align-items-center">
-          <div class="col-3 col-sm-6 pl-0">
-            <input  aria-label="End after"
-                    class="form-control" />
+        <div class="col-sm-4" *ngIf="form.value.frequency === 'After'">
+          <div class="form-group m-0 row d-flex align-items-center">
+            <div class="col-3 col-sm-6 pl-0">
+              <input formControlName="endAfter"  aria-label="End after"
+                     class="form-control" />
+            </div>
+            <div class="col-9 col-sm-6">
+              executions.
+            </div>
           </div>
-          <div class="col-9 col-sm-6">
-            executions.
+        </div>
+
+        <div class="col-6 col-sm-3"  *ngIf="form.value.frequency === 'On date'">
+          <div class="form-group">
+            <div class="input-group">
+              <input class="form-control" formControlName="endAt" placeholder="yyyy-mm-dd"
+                     ngbDatepicker #d="ngbDatepicker" (click)="d.toggle()">
+            </div>
           </div>
         </div>
       </div>
-
-      <div class="col-6 col-sm-3"  *ngIf="frequency === 'On date'">
-        <form class="form-inline">
-          <div class="form-group">
-            <div class="input-group">
-              <input class="form-control" placeholder="yyyy-mm-dd"
-                     name="dp" ngbDatepicker #d="ngbDatepicker" (click)="d.toggle()">
-            </div>
-          </div>
-        </form>
-      </div>
     </div>
   </div>
-</div>
-
+</form>
 

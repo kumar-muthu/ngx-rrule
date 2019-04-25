@@ -3,7 +3,7 @@
     <div class="form-group row d-flex align-items-sm-center">
       <div class="col-sm-1">every</div>
       <div class="col-sm-3">
-        <input aria-label="Repeat monthly interval" class="form-control" formControlName="interval"  (change)="onFormChange()" > </div>
+        <input aria-label="Repeat monthly interval" class="form-control" formControlName="interval" > </div>
       <div class="col-sm-1">month(s)</div>
     </div>
     <div class="form-group row d-flex align-items-sm-center false">
@@ -12,7 +12,7 @@
                aria-label="Repeat monthly on" value="on" checked (change)="radioChange($event)" ></div>
       <div class="col-sm-1">on day</div>
       <div class="col-sm-2">
-        <select aria-label="Repeat monthly on a day" formControlName="onDay" (change)="onFormChange()" [attr.disabled]="form.value.mode !== 'on'? '' : null"
+        <select aria-label="Repeat monthly on a day" formControlName="onDay" [attr.disabled]="form.value.mode !== 'on'? '' : null"
                 class="form-control">
           <option *ngFor="let val of range(1, 32)" [value]="val">{{val}}</option>
         </select>
@@ -26,7 +26,7 @@
       <div class="col-sm-1">on the</div>
       <div class="col-sm-3">
         <select formControlName="onTheWhich"
-                aria-label="Repeat monthly on the which" class="form-control"  (change)="onFormChange()" [attr.disabled]="form.value.mode === 'on'? '' : null">
+                aria-label="Repeat monthly on the which" class="form-control" [attr.disabled]="form.value.mode === 'on'? '' : null">
           <option value="First">First</option>
           <option value="Second">Second</option>
           <option value="Third">Third</option>
@@ -35,7 +35,7 @@
         </select>
       </div>
       <div class="col-sm-3">
-        <select formControlName="onTheDay" aria-label="Repeat monthly on the day"  (change)="onFormChange()" class="form-control"  [attr.disabled]="form.value.mode === 'on'? '' : null">
+        <select formControlName="onTheDay" aria-label="Repeat monthly on the day" class="form-control"  [attr.disabled]="form.value.mode === 'on'? '' : null">
           <option value="Monday">Monday</option>
           <option value="Tuesday">Tuesday</option>
           <option value="Wednesday">Wednesday</option>

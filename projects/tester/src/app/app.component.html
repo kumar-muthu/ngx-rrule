@@ -2,10 +2,23 @@
   <form [formGroup]="form">
     <ngx-rrule formControlName="testRule"></ngx-rrule>
   </form>
-
-
-  <hr>
-
-  {{ form.value | json}}
-
 </div>
+
+<hr class="mt-2 mb-2">
+<div class="container">
+  <h5><strong>Example handling</strong></h5>
+  <div class="px-3 pt-3 border rounded">
+    <div class="form-group row d-flex align-items-sm-center">
+      <div class="col-sm-2 text-sm-right">
+        <span class="col-form-label"><strong>RRule</strong></span></div>
+      <div class="col-sm-8">
+        <textarea class="form-control rrule rrule-not-copied" readonly="" rows="1"
+                  style="overflow: hidden; overflow-wrap: break-word; resize: none; height: 52px;">
+          DTSTART:20190301T230000Z;FREQ=YEARLY;BYMONTH=1;BYMONTHDAY=1
+        </textarea>
+      </div>
+    </div>
+  </div>
+</div>
+<hr>
+{{ form.value | json}}

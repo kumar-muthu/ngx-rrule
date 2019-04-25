@@ -5,6 +5,10 @@
     "@angular/common": "^7.2.0",
     "@angular/core": "^7.2.0",
     "@ng-bootstrap/ng-bootstrap": "^4.1.1",
-    "lodash": "^4.17.11"
+    "lodash": "^4.17.11",
+    "rrule": "^2.6.0",
+    "moment": "^2.24.0"
+  },
+  "dependencies": {
   }
 }

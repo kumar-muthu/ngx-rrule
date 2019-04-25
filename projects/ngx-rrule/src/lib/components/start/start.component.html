@@ -6,7 +6,7 @@
   </div>
   <div class="col-md-3">
     <div class="input-group">
-      <input class="form-control" placeholder="yyyy-mm-dd"
+      <input class="form-control" [(ngModel)]="startDate" placeholder="yyyy-mm-dd" (ngModelChange)="onFormChange()"
              name="dp" ngbDatepicker #d="ngbDatepicker" (click)="d.toggle()">
     </div>
   </div>

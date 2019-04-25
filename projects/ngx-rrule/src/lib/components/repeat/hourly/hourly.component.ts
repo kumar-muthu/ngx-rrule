@@ -19,6 +19,12 @@ export class HourlyComponent implements OnInit, ControlValueAccessor {
     this.form = this.formBuilder.group({
       interval: 0,
     });
+
+    this.form.valueChanges.subscribe(() => {
+      this.onFormChange();
+    });
+
+    this.onFormChange();
   }
 
   writeValue = (input: any): void => {
