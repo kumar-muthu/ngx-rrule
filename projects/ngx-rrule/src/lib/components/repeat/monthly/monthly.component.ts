@@ -41,5 +41,20 @@ export class MonthlyComponent implements OnInit, ControlValueAccessor {
     this.onChange.emit();
   }
 
+  radioChange = (event) => {
+    console.log(event);
+    if (event.target.value === 'on the') {
+      this.form.patchValue({
+        onDay: '',
+      });
+    } else {
+      this.form.patchValue({
+        onTheWhich: '',
+        onTheDay: ''
+      });
+    }
+    this.onFormChange();
+  }
+
   public range = (start, end) => Array.from({length: (end - start)}, (v, k) => k + start);
 }

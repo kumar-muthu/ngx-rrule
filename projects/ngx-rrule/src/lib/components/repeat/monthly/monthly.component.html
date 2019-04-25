@@ -3,13 +3,13 @@
     <div class="form-group row d-flex align-items-sm-center">
       <div class="col-sm-1">every</div>
       <div class="col-sm-3">
-        <input aria-label="Repeat monthly interval" class="form-control" formControlName="interval"></div>
+        <input aria-label="Repeat monthly interval" class="form-control" formControlName="interval"  (change)="onFormChange()" > </div>
       <div class="col-sm-1">month(s)</div>
     </div>
     <div class="form-group row d-flex align-items-sm-center false">
       <div class="col-sm-1">
         <input type="radio" formControlName="mode"
-               aria-label="Repeat monthly on" value="on" checked></div>
+               aria-label="Repeat monthly on" value="on" checked (change)="radioChange($event)" ></div>
       <div class="col-sm-1">on day</div>
       <div class="col-sm-2">
         <select aria-label="Repeat monthly on a day" formControlName="onDay" (change)="onFormChange()" [attr.disabled]="form.value.mode !== 'on'? '' : null"
@@ -20,11 +20,11 @@
     </div>
     <div class="form-group row d-flex align-items-sm-center opacity-50">
       <div class="col-sm-1">
-        <input type="radio" formControlName="mode"
+        <input type="radio" formControlName="mode" (change)="radioChange($event)"
                aria-label="Repeat monthly on the" value="on the">
       </div>
       <div class="col-sm-1">on the</div>
-      <div class="col-sm-2">
+      <div class="col-sm-3">
         <select formControlName="onTheWhich"
                 aria-label="Repeat monthly on the which" class="form-control"  (change)="onFormChange()" [attr.disabled]="form.value.mode === 'on'? '' : null">
           <option value="First">First</option>

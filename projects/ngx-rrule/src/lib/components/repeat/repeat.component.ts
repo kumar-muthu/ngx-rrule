@@ -24,6 +24,17 @@ export class RepeatComponent implements OnInit, ControlValueAccessor {
     });
   }
 
+  onOptionChange() {
+    this.form.patchValue({
+      yearly: {},
+      monthly: {},
+      weekly: {},
+      hourly: {},
+      daily: {},
+    });
+    this.onFormChange();
+  }
+
   writeValue = (input: any): void => {
   }
 
@@ -35,7 +46,6 @@ export class RepeatComponent implements OnInit, ControlValueAccessor {
   }
 
   onFormChange = () => {
-    console.log(this.form.value);
     this.propagateChange(this.form.value);
     this.onChange.emit();
   }

@@ -7,8 +7,8 @@
     </strong>
   </div>
   <div class="col-md-10">
-   <div class="form-group row">
-     <select [(ngModel)]="frequency" class="form-control col-md-2">
+   <div class="form-group">
+     <select [(ngModel)]="frequency" (change)="onOptionChange()" class="form-control col-md-2">
        <option value="Yearly">Yearly</option>
        <option value="Monthly">Monthly</option>
        <option value="Weekly">Weekly</option>
