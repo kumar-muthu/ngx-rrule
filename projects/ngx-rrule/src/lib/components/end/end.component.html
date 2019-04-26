@@ -10,7 +10,7 @@
       <div class="row">
 
         <div class="col-sm-3 mr-2">
-          <select  formControlName="frequency" class="form-control">
+          <select  formControlName="mode" class="form-control">
             <option value="Never">Never</option>
             <option value="After">After</option>
             <option value="On date">On date</option>
@@ -20,7 +20,7 @@
         <div class="col-sm-4" *ngIf="form.value.frequency === 'After'">
           <div class="form-group m-0 row d-flex align-items-center">
             <div class="col-3 col-sm-6 pl-0">
-              <input formControlName="endAfter"  aria-label="End after"
+              <input formControlName="after"  aria-label="End after"
                      class="form-control" />
             </div>
             <div class="col-9 col-sm-6">

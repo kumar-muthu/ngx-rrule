@@ -50,7 +50,11 @@ export class RepeatComponent implements OnInit, ControlValueAccessor {
   }
 
   onFormChange = () => {
-    this.propagateChange(this.form.value);
+    const params = {
+        frequency: this.frequency,
+      ...this.form.value
+    };
+    this.propagateChange(params);
     this.onChange.emit();
   }
 }

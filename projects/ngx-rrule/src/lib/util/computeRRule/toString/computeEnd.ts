@@ -1,6 +1,6 @@
 import * as momentImported from 'moment'; const moment = momentImported;
 
-const computeEnd = ({ mode, after, onDate: { date } }) => {
+const computeEnd = ({ mode, after, date }) => {
   const end: any = {};
 
   if (mode === 'After') {

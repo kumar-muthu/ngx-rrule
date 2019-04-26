@@ -17,9 +17,9 @@ export class EndComponent implements OnInit, ControlValueAccessor {
 
   ngOnInit() {
     this.form = this.formBuilder.group({
-      endAfter: 1,
+      after: 1,
       endAt: '',
-      frequency: 'Never'
+      mode: 'Never'
     });
 
     this.form.valueChanges.subscribe(() => {
@@ -38,6 +38,7 @@ export class EndComponent implements OnInit, ControlValueAccessor {
   }
 
   onFormChange = () => {
+    const param = { ...this.form.value, date: this.form.value.endAt };
     this.propagateChange(this.form.value);
     this.onChange.emit();
   }
