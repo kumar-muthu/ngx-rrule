@@ -1,7 +1,7 @@
 import {RRule} from 'rrule';
 
 const computeDaily = ({ interval }) => ({
-  freq: RRule,
+  freq: RRule.DAILY,
   interval,
 });
 

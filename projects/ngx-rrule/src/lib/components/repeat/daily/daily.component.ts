@@ -1,4 +1,4 @@
-import {Component, OnInit, Output, forwardRef, EventEmitter} from '@angular/core';
+import {Component, OnInit, AfterViewInit, Output, forwardRef, EventEmitter} from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 
@@ -17,14 +17,16 @@ export class DailyComponent implements OnInit, ControlValueAccessor {
 
   ngOnInit() {
     this.form = this.formBuilder.group({
-      interval: 0,
+      interval: 1,
     });
 
     this.form.valueChanges.subscribe(() => {
       this.onFormChange();
     });
 
-    this.onFormChange();
+    setTimeout(() => {
+      this.onFormChange();
+    }, 100);
   }
 
   writeValue = (input: any): void => {

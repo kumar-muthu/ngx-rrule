@@ -16,9 +16,13 @@ export class EndComponent implements OnInit, ControlValueAccessor {
   constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit() {
+    const dateObj = new Date() ;
+    const month = dateObj.getMonth() + 1;
+    const day = dateObj.getDate() ;
+    const year = dateObj.getFullYear();
     this.form = this.formBuilder.group({
       after: 1,
-      endAt: '',
+      endAt: {month, day, year},
       mode: 'Never'
     });
 
@@ -38,8 +42,9 @@ export class EndComponent implements OnInit, ControlValueAccessor {
   }
 
   onFormChange = () => {
-    const param = { ...this.form.value, date: this.form.value.endAt };
-    this.propagateChange(this.form.value);
+    const endAt = this.form.value.endAt;
+    const param = { ...this.form.value, date: new Date(endAt.year, endAt.month, endAt.day) };
+    this.propagateChange(param);
     this.onChange.emit();
   }
 

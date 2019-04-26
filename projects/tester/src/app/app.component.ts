@@ -9,10 +9,15 @@ import {FormBuilder} from '@angular/forms';
 export class AppComponent implements OnInit {
   form;
   value;
+  rRule;
   constructor(private formBuilder: FormBuilder) {}
   ngOnInit() {
     this.form = this.formBuilder.group({
       testRule: {},
+    });
+
+    this.form.valueChanges.subscribe(() => {
+      this.rRule = this.form.value.testRule.rRule;
     });
   }
 }

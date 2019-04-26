@@ -30,7 +30,7 @@ export class StartComponent implements OnInit, ControlValueAccessor {
   }
 
   onFormChange = () => {
-    this.propagateChange({ onDate: { date: new Date(this.startDate.year, this.startDate.month, this.startDate.day) }});
+    this.propagateChange(new Date(this.startDate.year, this.startDate.month, this.startDate.day));
     this.onChange.emit();
   }
 }

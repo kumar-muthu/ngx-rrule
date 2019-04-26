@@ -30,8 +30,27 @@ export class RepeatComponent implements OnInit, ControlValueAccessor {
 
   onOptionChange() {
     this.form.patchValue({
-      yearly: {},
-      monthly: {},
+      yearly: {
+        mode: 'on',
+        on: {
+          month: 'Jan',
+          day: '1'
+        },
+        onThe: {
+          which: 'First',
+          day: 'Monday',
+          month: 'Jan'
+        }
+      },
+      monthly: {mode: '',
+        interval: 1,
+        on: {
+          day: 1
+        },
+        onThe: {
+          which:  '',
+          day:  1
+        }},
       weekly: {},
       hourly: {},
       daily: {},

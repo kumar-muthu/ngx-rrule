@@ -7,8 +7,8 @@ const computeEnd = ({ mode, after, date }) => {
     end.count = after;
   }
 
-  if (mode === 'On date') {
-    end.until = moment(date).format();
+  if (mode === 'On date' && moment.isMoment(moment(date))) {
+    end.until = moment(date).toDate();
   }
 
   return end;

@@ -1,5 +1,6 @@
+import {Weekday} from 'rrule';
 const computeMonthlyOnThe = (onThe) => {
-  const repeat: any = {};
+  let repeat: any = {};
 
   switch (onThe.which) {
     case 'First':
@@ -56,6 +57,9 @@ const computeMonthlyOnThe = (onThe) => {
       break;
   }
 
+  if (repeat.byweekday && repeat.bysetpos) {
+    repeat.byweekday = repeat.byweekday.map(r => new Weekday(r, repeat.bysetpos));
+  }
   return repeat;
 };
 

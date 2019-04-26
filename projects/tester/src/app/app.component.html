@@ -1,24 +1,29 @@
 <div class="container">
+  <h3 class="mt-2">Angular RRule Generator </h3>
   <form [formGroup]="form">
     <ngx-rrule formControlName="testRule"></ngx-rrule>
   </form>
-</div>
-
-<hr class="mt-2 mb-2">
-<div class="container">
-  <h5><strong>Example handling</strong></h5>
+  <h5 class="mt-3"><strong>Output</strong></h5>
   <div class="px-3 pt-3 border rounded">
     <div class="form-group row d-flex align-items-sm-center">
       <div class="col-sm-2 text-sm-right">
-        <span class="col-form-label"><strong>RRule</strong></span></div>
+        <span class="col-form-label"><strong>RRule String</strong></span></div>
       <div class="col-sm-8">
-        <textarea class="form-control rrule rrule-not-copied" readonly="" rows="1"
-                  style="overflow: hidden; overflow-wrap: break-word; resize: none; height: 52px;">
-          {{form.value.testRule?.str}}
+        <textarea class="form-control rrule rrule-not-copied" readonly="" rows="5"
+                  style="overflow: hidden; overflow-wrap: break-word; resize: none;">{{rRule?.toString()?.trim()}}
+        </textarea>
+      </div>
+    </div>
+
+    <div class="form-group row d-flex align-items-sm-center">
+      <div class="col-sm-2 text-sm-right">
+        <span class="col-form-label"><strong>RRule Text</strong></span></div>
+      <div class="col-sm-8">
+        <textarea class="form-control rrule rrule-not-copied" readonly="" rows="5"
+                  style="overflow: hidden; overflow-wrap: break-word; resize: none;">{{rRule?.toText()?.trim()}}
         </textarea>
       </div>
     </div>
   </div>
 </div>
-<hr>
-{{ form.value | json}}
+

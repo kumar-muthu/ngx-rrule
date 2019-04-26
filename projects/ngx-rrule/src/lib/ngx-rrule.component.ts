@@ -34,10 +34,15 @@ export class NgxRruleComponent implements OnInit, ControlValueAccessor {
   }
 
   onFormChange = () => {
-    const str = this.service.computeRRule({...this.form.value, options: {}});
+    let rRule;
+    try {
+      rRule = this.service.computeRRule({...this.form.value, options: {}});
+    } catch (err) {
+      console.error(err);
+    }
     this.propagateChange({
       raw: this.form.value,
-      str
+      rRule
     });
   }
 }

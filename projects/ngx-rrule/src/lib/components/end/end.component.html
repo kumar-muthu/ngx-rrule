@@ -1,7 +1,7 @@
 
 <form [formGroup]="form">
   <div class="row">
-    <div class="col-md-2 text-sm-right">
+    <div class="col-md-2">
       <strong>
         End
       </strong>
@@ -9,7 +9,7 @@
     <div class="col-md-10">
       <div class="row">
 
-        <div class="col-sm-3 mr-2">
+        <div class="col-sm-4 mr-2">
           <select  formControlName="mode" class="form-control">
             <option value="Never">Never</option>
             <option value="After">After</option>
@@ -17,7 +17,7 @@
           </select>
         </div>
 
-        <div class="col-sm-4" *ngIf="form.value.frequency === 'After'">
+        <div class="col-sm-4" *ngIf="form.value.mode === 'After'">
           <div class="form-group m-0 row d-flex align-items-center">
             <div class="col-3 col-sm-6 pl-0">
               <input formControlName="after"  aria-label="End after"
@@ -28,8 +28,7 @@
             </div>
           </div>
         </div>
-
-        <div class="col-6 col-sm-3"  *ngIf="form.value.frequency === 'On date'">
+        <div class="col-6 col-sm-4"  *ngIf="form.value.mode == 'On date'">
           <div class="form-group">
             <div class="input-group">
               <input class="form-control" formControlName="endAt" placeholder="yyyy-mm-dd"

@@ -31,6 +31,10 @@ export class WeeklyComponent implements OnInit, ControlValueAccessor {
     this.weeklyForm.valueChanges.subscribe(() => {
       this.onFormChange();
     });
+
+    setTimeout(() => {
+      this.onFormChange();
+    }, 100);
   }
 
 

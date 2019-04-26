@@ -29,7 +29,9 @@ export class YearlyComponent implements OnInit, ControlValueAccessor {
       this.onFormChange();
     });
 
-    this.onFormChange();
+    setTimeout(() => {
+      this.onFormChange();
+    }, 100);
   }
 
   writeValue = (input: any): void => {
@@ -43,7 +45,19 @@ export class YearlyComponent implements OnInit, ControlValueAccessor {
   }
 
   onFormChange = () => {
-    this.propagateChange(this.form.value);
+    const param = {
+      mode: this.form.value.mode,
+      on: {
+        month: this.form.value.onMonth,
+        day: this.form.value.onDay
+      },
+      onThe: {
+        which: this.form.value.onTheWhich,
+        day: this.form.value.onTheDay,
+        month: this.form.value.onTheMonth
+      }
+    };
+    this.propagateChange(param);
     this.onChange.emit();
   }
 
