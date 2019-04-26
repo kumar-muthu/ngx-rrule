@@ -1,6 +1,8 @@
 # NgxRrule
 > Recurrence rules generator form control for Angular
 
+> Inspired and partially forked from https://github.com/Fafruch/react-rrule-generator
+
 [![Alpha](https://img.shields.io/badge/status-alpha-yellow.svg)](Alpha)
 [![LICENSE](https://img.shields.io/npm/l/express.svg)](LICENSE)
 
