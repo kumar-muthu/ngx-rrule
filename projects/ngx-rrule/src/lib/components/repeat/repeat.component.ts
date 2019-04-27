@@ -17,7 +17,7 @@ export class RepeatComponent implements OnInit, ControlValueAccessor {
     this.form = this.formBuilder.group({
       yearly: {},
       monthly: {},
-      weekly: {weeklyInterval: 1},
+      weekly: {},
       hourly: {},
       daily: {},
       interval: 1,
@@ -27,6 +27,11 @@ export class RepeatComponent implements OnInit, ControlValueAccessor {
     this.form.valueChanges.subscribe(() => {
       this.onFormChange();
     });
+
+
+    setTimeout(() => {
+      this.onFormChange();
+    }, 100);
   }
 
   onOptionChange() {
@@ -44,7 +49,6 @@ export class RepeatComponent implements OnInit, ControlValueAccessor {
         }
       },
       monthly: {mode: '',
-        interval: 1,
         on: {
           day: 1
         },
@@ -73,6 +77,7 @@ export class RepeatComponent implements OnInit, ControlValueAccessor {
     const params = {
       ...this.form.value
     };
+    params[this.form.value.frequency.toLowerCase()].interval = this.form.value.interval;
     this.propagateChange(params);
     this.onChange.emit();
   }

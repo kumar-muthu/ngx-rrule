@@ -57,7 +57,7 @@ export class WeeklyComponent implements OnInit, ControlValueAccessor {
       };
 
       value.interval = this.weeklyForm.value.weeklyInterval;
-      value.days = _.pickBy(this.weeklyForm.value, r => r === true);
+      value.days = this.weeklyForm.value;
       this.propagateChange(value);
       this.onChange.emit();
     }
