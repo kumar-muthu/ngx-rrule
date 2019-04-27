@@ -4,6 +4,7 @@
 > Inspired and partially forked from https://github.com/Fafruch/react-rrule-generator
 
 [![Alpha](https://img.shields.io/badge/status-alpha-yellow.svg)](Alpha)
+[![npm version](https://badge.fury.io/js/ngx-rrule.svg)](https://badge.fury.io/js/ngx-rrule)
 [![LICENSE](https://img.shields.io/npm/l/express.svg)](LICENSE)
 
 ## Description
