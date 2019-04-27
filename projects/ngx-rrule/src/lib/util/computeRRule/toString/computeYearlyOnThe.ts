@@ -1,5 +1,5 @@
 import { MONTHS } from '../constant';
-
+import {Weekday} from 'rrule';
 const computeYearlyOnThe = (onThe) => {
   const repeat: any = {};
 
@@ -58,6 +58,10 @@ const computeYearlyOnThe = (onThe) => {
       break;
   }
 
+
+  if (repeat.byweekday && repeat.bysetpos) {
+    repeat.byweekday = repeat.byweekday.map(r => new Weekday(r, repeat.bysetpos));
+  }
   repeat.bymonth = MONTHS.indexOf(onThe.month) + 1;
 
   return repeat;
