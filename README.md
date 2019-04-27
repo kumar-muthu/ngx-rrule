@@ -16,8 +16,7 @@ It also uses:
 * [ng-bootstrap](https://ng-bootstrap.github.io/#/components/datepicker/overview)
 
 ## Demo
-https://ng-bootstrap.github.io/#/components/datepicker/overview
-
+https://kumar-muthu.github.io/ngx-rrule/
 
 ## Installation and Docs
 Todo
