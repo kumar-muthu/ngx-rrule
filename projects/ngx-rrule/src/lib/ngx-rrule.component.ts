@@ -11,18 +11,42 @@ import {NgxRruleService} from './ngx-rrule.service';
 export class NgxRruleComponent implements OnInit, ControlValueAccessor {
   @Input() hideStart = false;
   @Input() hideEnd = false;
+  @Input() startAt;
+  @Input() endAt;
   public form: FormGroup;
   private propagateChange;
   constructor(private formBuilder: FormBuilder,
               private  service: NgxRruleService) {}
 
   ngOnInit() {
-    this.form = this.formBuilder.group({
+    const params: any = {
       start: {},
       repeat: {},
-      end: {},
-    });
+      end: {
+        mode: 'Never'
+      }
+    };
+
+
+    if (this.endAt) {
+      params.end.endAt = this.getDateParts(this.endAt);
+      params.end.mode = 'On date';
+    }
+
+    if (this.startAt) {
+      params.start = this.getDateParts(this.startAt);
+    }
+
+    this.form = this.formBuilder.group(params);
+
     this.form.valueChanges.subscribe(() => this.onFormChange());
+  }
+
+  private getDateParts(dateObj) {
+    const month = dateObj.getMonth() + 1;
+    const day = dateObj.getDate();
+    const year = dateObj.getFullYear();
+    return {month, day, year};
   }
 
   writeValue = (input: any): void => {
@@ -38,7 +62,14 @@ export class NgxRruleComponent implements OnInit, ControlValueAccessor {
   onFormChange = () => {
     let rRule;
     try {
-      rRule = this.service.computeRRule({...this.form.value, options: {}});
+      const params = this.form.value;
+      if (this.hideStart && !this.startAt) {
+        params.start = null;
+      }
+      if (this.hideEnd && !this.endAt) {
+        params.end = null;
+      }
+      rRule = this.service.computeRRule({...params, options: {}});
     } catch (err) {
       console.error(err);
     }

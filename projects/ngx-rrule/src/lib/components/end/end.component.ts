@@ -26,12 +26,16 @@ export class EndComponent implements OnInit, ControlValueAccessor {
       mode: 'Never'
     });
 
-    this.form.valueChanges.subscribe(() => {
+    setTimeout(() => {
+      this.form.valueChanges.subscribe(() => {
+        this.onFormChange();
+      });
       this.onFormChange();
-    });
+    }, 100);
   }
 
   writeValue = (input: any): void => {
+    this.form.patchValue(input);
   }
 
   registerOnChange(fn: any): void {

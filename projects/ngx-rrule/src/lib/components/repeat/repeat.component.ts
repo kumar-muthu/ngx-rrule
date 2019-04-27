@@ -28,7 +28,6 @@ export class RepeatComponent implements OnInit, ControlValueAccessor {
       this.onFormChange();
     });
 
-
     setTimeout(() => {
       this.onFormChange();
     }, 100);

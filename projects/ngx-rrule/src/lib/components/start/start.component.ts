@@ -20,6 +20,7 @@ export class StartComponent implements OnInit, ControlValueAccessor {
   }
 
   writeValue = (input: any): void => {
+    this.startDate = input;
   }
 
   registerOnChange(fn: any): void {

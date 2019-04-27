@@ -1,9 +1,7 @@
-<div class="p-2">
-  <form [formGroup]="form">
-    <ngx-start *ngIf="hideStart === false" formControlName="start"></ngx-start>
-    <br *ngIf="hideStart === false">
-    <ngx-repeat formControlName="repeat"></ngx-repeat>
-    <br *ngIf="hideEnd === false">
-    <ngx-end *ngIf="hideEnd === false" formControlName="end"></ngx-end>
-  </form>
-</div>
+<form [formGroup]="form">
+  <ngx-start *ngIf="hideStart === false" formControlName="start"></ngx-start>
+  <br *ngIf="hideStart === false">
+  <ngx-repeat formControlName="repeat"></ngx-repeat>
+  <br *ngIf="hideEnd === false">
+  <ngx-end *ngIf="hideEnd === false" formControlName="end"></ngx-end>
+</form>
