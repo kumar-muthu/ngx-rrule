@@ -1,20 +1,6 @@
 <form [formGroup]="weeklyForm">
-  <div class="form-group row mt-2 mb-2">
-    <div class="col-sm-1">
-      every
-    </div>
-    <div class="col-sm-3">
-      <input formControlName="weeklyInterval"
-             aria-label="Repeat weekly interval"
-             class="form-control"/>
-    </div>
-    <div class="col-sm-1">
-      week(s)
-    </div>
-  </div>
-
   <div class="btn-group btn-group-toggle">
-    <label class="btn-primary" ngbButtonLabel  *ngFor="let day of days">
+    <label class="btn-outline-primary btn-circle mr-2" ngbButtonLabel  *ngFor="let day of days">
       <input type="checkbox" [formControlName]="day.toLowerCase()" ngbButton> {{day}}
     </label>
   </div>

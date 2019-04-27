@@ -1,27 +1,37 @@
 <div class="container">
-  <h3 class="mt-2">Angular RRule Generator </h3>
-  <form [formGroup]="form">
-    <ngx-rrule formControlName="testRule"></ngx-rrule>
-  </form>
-  <h5 class="mt-3"><strong>Output</strong></h5>
-  <div class="px-3 pt-3 border rounded">
-    <div class="form-group row d-flex align-items-sm-center">
-      <div class="col-sm-2 text-sm-right">
-        <span class="col-form-label"><strong>RRule String</strong></span></div>
-      <div class="col-sm-8">
+  <h3 class="mt-2">Angular RRule Control - Demo </h3>
+  <div class="card">
+    <div class="card-body">
+      <form [formGroup]="form">
+        <ngx-rrule formControlName="testRule" [hideStart]="false" [hideEnd]="false"></ngx-rrule>
+      </form>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header">
+      <span class="card-titler"><strong>Output</strong></span>
+    </div>
+    <div class="card-body">
+      <div class="px-1 pt-3">
+        <div class="form-group row d-flex align-items-sm-center">
+          <div class="col-sm-2 text-sm-right">
+            <span class="col-form-label"><strong>RRule String</strong></span></div>
+          <div class="col-sm-8">
         <textarea class="form-control rrule rrule-not-copied" readonly="" rows="5"
                   style="overflow: hidden; overflow-wrap: break-word; resize: none;">{{rRule?.toString()?.trim()}}
         </textarea>
-      </div>
-    </div>
+          </div>
+        </div>
 
-    <div class="form-group row d-flex align-items-sm-center">
-      <div class="col-sm-2 text-sm-right">
-        <span class="col-form-label"><strong>RRule Text</strong></span></div>
-      <div class="col-sm-8">
+        <div class="form-group row d-flex align-items-sm-center">
+          <div class="col-sm-2 text-sm-right">
+            <span class="col-form-label"><strong>RRule Text</strong></span></div>
+          <div class="col-sm-8">
         <textarea class="form-control rrule rrule-not-copied" readonly="" rows="5"
                   style="overflow: hidden; overflow-wrap: break-word; resize: none;">{{rRule?.toText()?.trim()}}
         </textarea>
+          </div>
+        </div>
       </div>
     </div>
   </div>

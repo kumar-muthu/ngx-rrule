@@ -1,4 +1,4 @@
-import {Component, forwardRef, OnInit} from '@angular/core';
+import {Component, forwardRef, Input, OnInit} from '@angular/core';
 import {ControlValueAccessor, FormBuilder, FormGroup, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {NgxRruleService} from './ngx-rrule.service';
 
@@ -9,6 +9,8 @@ import {NgxRruleService} from './ngx-rrule.service';
   providers: [{provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => NgxRruleComponent), multi: true}]
 })
 export class NgxRruleComponent implements OnInit, ControlValueAccessor {
+  @Input() hideStart = false;
+  @Input() hideEnd = false;
   public form: FormGroup;
   private propagateChange;
   constructor(private formBuilder: FormBuilder,

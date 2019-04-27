@@ -9,7 +9,6 @@ import {ControlValueAccessor, NG_VALUE_ACCESSOR, FormBuilder, FormGroup} from '@
 })
 export class RepeatComponent implements OnInit, ControlValueAccessor {
   @Output() onChange = new EventEmitter();
-  public frequency = 'Weekly';
   public form: FormGroup;
   private propagateChange;
   constructor(private formBuilder: FormBuilder) {}
@@ -21,6 +20,8 @@ export class RepeatComponent implements OnInit, ControlValueAccessor {
       weekly: {weeklyInterval: 1},
       hourly: {},
       daily: {},
+      interval: 1,
+      frequency: 'Weekly'
     });
 
     this.form.valueChanges.subscribe(() => {
@@ -70,7 +71,6 @@ export class RepeatComponent implements OnInit, ControlValueAccessor {
 
   onFormChange = () => {
     const params = {
-        frequency: this.frequency,
       ...this.form.value
     };
     this.propagateChange(params);

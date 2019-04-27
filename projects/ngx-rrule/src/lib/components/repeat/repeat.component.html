@@ -1,27 +1,20 @@
+<form [formGroup]="form">
+  <div class="row col form-inline">
+    <label class="mr-2">Repeat every</label>
+    <input aria-label="Repeat interval" class="form-control" value="1" formControlName="interval" >
 
+    <select formControlName="frequency" (change)="onOptionChange()" class="form-control mt-md-0 mt-sm-2">
+      <option value="Yearly">Year</option>
+      <option value="Monthly">Month</option>
+      <option value="Weekly">Week</option>
+      <option value="Daily">Day</option>
+      <option value="Hourly">Hour</option>
+    </select>
 
-<div class="row">
-  <div class="col-md-2">
-    <strong>
-      Repeat
-    </strong>
   </div>
-  <div class="col-md-10">
-   <div class="form-group">
-     <select [(ngModel)]="frequency" (change)="onOptionChange()" class="form-control col-md-3">
-       <option value="Yearly">Yearly</option>
-       <option value="Monthly">Monthly</option>
-       <option value="Weekly">Weekly</option>
-       <option value="Daily">Daily</option>
-       <option value="Hourly">Hourly</option>
-     </select>
-   </div>
-    <form [formGroup]="form">
-      <ngx-yearly *ngIf="frequency === 'Yearly'" formControlName="yearly"></ngx-yearly>
-      <ngx-monthly *ngIf="frequency === 'Monthly'" formControlName="monthly"></ngx-monthly>
-      <ngx-weekly *ngIf="frequency === 'Weekly'" formControlName="weekly"></ngx-weekly>
-      <ngx-hourly *ngIf="frequency === 'Hourly'" formControlName="hourly"></ngx-hourly>
-      <ngx-daily *ngIf="frequency === 'Daily'" formControlName="daily"></ngx-daily>
-    </form>
+  <div class="row col mt-1 mb-1">
+    <ngx-yearly *ngIf="form.value.frequency === 'Yearly'" formControlName="yearly"></ngx-yearly>
+    <ngx-monthly *ngIf="form.value.frequency === 'Monthly'" formControlName="monthly"></ngx-monthly>
+    <ngx-weekly *ngIf="form.value.frequency === 'Weekly'" formControlName="weekly"></ngx-weekly>
   </div>
-</div>
+</form>

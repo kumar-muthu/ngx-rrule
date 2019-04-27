@@ -8,9 +8,7 @@ const computeRepeat = ({
   frequency,
   yearly,
   monthly,
-  weekly,
-  daily,
-  hourly,
+  weekly, interval
 }) => {
   switch (frequency) {
     case 'Yearly': {
@@ -23,10 +21,10 @@ const computeRepeat = ({
       return computeWeekly(weekly);
     }
     case 'Daily': {
-      return computeDaily(daily);
+      return computeDaily(interval);
     }
     case 'Hourly': {
-      return computeHourly(hourly);
+      return computeHourly(interval);
     }
     default:
       return {};

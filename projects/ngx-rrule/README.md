@@ -1,24 +1,20 @@
 # NgxRrule
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.2.0.
+## Description
 
-## Code scaffolding
+This is [Angular](https://angular.io/) form control using [Bootstrap](https://github.com/twbs/bootstrap) styling. It's built with the help of a great [rrule.js](https://github.com/jakubroztocil/rrule) library.
 
-Run `ng generate component component-name --project ngx-rrule` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project ngx-rrule`.
-> Note: Don't forget to add `--project ngx-rrule` or else it will be added to the default project in your `angular.json` file. 
+It also uses:
+* [lodash](https://github.com/lodash/lodash)
+* [moment](https://github.com/moment/moment)
+* [ng-bootstrap](https://ng-bootstrap.github.io/#/components/datepicker/overview)
 
-## Build
+## Demo
+https://ng-bootstrap.github.io/#/components/datepicker/overview
 
-Run `ng build ngx-rrule` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Publishing
+## Installation and Docs
+Todo
 
-After building your library with `ng build ngx-rrule`, go to the dist folder `cd dist/ngx-rrule` and run `npm publish`.
-
-## Running unit tests
-
-Run `ng test ngx-rrule` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## License 
+MIT

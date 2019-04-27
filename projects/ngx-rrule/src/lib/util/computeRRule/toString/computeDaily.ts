@@ -1,6 +1,6 @@
 import {RRule} from 'rrule';
 
-const computeDaily = ({ interval }) => ({
+const computeDaily = (interval) => ({
   freq: RRule.DAILY,
   interval,
 });
