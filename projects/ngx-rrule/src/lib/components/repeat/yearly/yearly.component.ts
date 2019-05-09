@@ -17,12 +17,17 @@ export class YearlyComponent implements OnInit, ControlValueAccessor {
 
   ngOnInit() {
     this.form = this.formBuilder.group({
+      interval: 0,
       mode: 'on',
-      onDay: '1',
-      onMonth: 'Jan',
-      onTheWhich: 'First',
-      onTheDay: 'Monday',
-      onTheMonth: 'Jan'
+      on: this.formBuilder.group({
+        month: 'Jan',
+        day: 1
+      }),
+      onThe: this.formBuilder.group({
+        month: 'Jan',
+        day: 'Monday',
+        which: 'First'
+      })
     });
 
     this.form.valueChanges.subscribe(() => {
@@ -35,6 +40,7 @@ export class YearlyComponent implements OnInit, ControlValueAccessor {
   }
 
   writeValue = (input: any): void => {
+    this.form.patchValue(input);
   }
 
   registerOnChange(fn: any): void {
@@ -45,19 +51,9 @@ export class YearlyComponent implements OnInit, ControlValueAccessor {
   }
 
   onFormChange = () => {
-    const param = {
-      mode: this.form.value.mode,
-      on: {
-        month: this.form.value.onMonth,
-        day: this.form.value.onDay
-      },
-      onThe: {
-        which: this.form.value.onTheWhich,
-        day: this.form.value.onTheDay,
-        month: this.form.value.onTheMonth
-      }
-    };
-    this.propagateChange(param);
+    if (this.propagateChange) {
+      this.propagateChange(this.form.value);
+    }
     this.onChange.emit();
   }
 

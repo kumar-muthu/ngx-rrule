@@ -1,4 +1,4 @@
-import {Component, EventEmitter, forwardRef, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, forwardRef, Input, OnInit, Output} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR, FormBuilder, FormGroup} from '@angular/forms';
 
 @Component({
@@ -10,6 +10,7 @@ import {ControlValueAccessor, NG_VALUE_ACCESSOR, FormBuilder, FormGroup} from '@
 export class RepeatComponent implements OnInit, ControlValueAccessor {
   @Output() onChange = new EventEmitter();
   public form: FormGroup;
+  @Input() frequency;
   private propagateChange;
   constructor(private formBuilder: FormBuilder) {}
 
@@ -63,6 +64,7 @@ export class RepeatComponent implements OnInit, ControlValueAccessor {
   }
 
   writeValue = (input: any): void => {
+    this.form.patchValue({...input, interval: input[input.frequency.toLowerCase()].interval});
   }
 
   registerOnChange(fn: any): void {
@@ -77,7 +79,9 @@ export class RepeatComponent implements OnInit, ControlValueAccessor {
       ...this.form.value
     };
     params[this.form.value.frequency.toLowerCase()].interval = this.form.value.interval;
-    this.propagateChange(params);
+    if (this.propagateChange) {
+      this.propagateChange(params);
+    }
     this.onChange.emit();
   }
 }

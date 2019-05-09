@@ -1,6 +1,7 @@
 import {Component, OnInit, Output, forwardRef, EventEmitter} from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
+import {getDateParts} from "../../util/common";
 
 @Component({
   selector: 'ngx-end',
@@ -35,7 +36,10 @@ export class EndComponent implements OnInit, ControlValueAccessor {
   }
 
   writeValue = (input: any): void => {
-    this.form.patchValue(input);
+    this.form.patchValue({
+      ...input,
+      endAt: getDateParts(new Date(input.onDate.date))
+    });
   }
 
   registerOnChange(fn: any): void {

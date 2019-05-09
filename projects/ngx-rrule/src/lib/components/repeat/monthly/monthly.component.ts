@@ -20,9 +20,13 @@ export class MonthlyComponent implements OnInit, ControlValueAccessor {
     this.form = this.formBuilder.group({
       interval: 0,
       mode: 'on',
-      onDay: '1',
-      onTheWhich: 'First',
-      onTheDay: 'Monday'
+      on: this.formBuilder.group({
+        day: '1'
+      }),
+      onThe: this.formBuilder.group({
+        which: 'First',
+        day: 'Monday'
+      }),
     });
 
     this.form.valueChanges.subscribe(() => {
@@ -36,6 +40,7 @@ export class MonthlyComponent implements OnInit, ControlValueAccessor {
   }
 
   writeValue = (input: any): void => {
+    this.form.patchValue(input);
   }
 
   registerOnChange(fn: any): void {
@@ -46,18 +51,9 @@ export class MonthlyComponent implements OnInit, ControlValueAccessor {
   }
 
   onFormChange = () => {
-    const params = {
-      mode: this.form.value.mode,
-      interval: this.form.value.interval,
-      on: {
-        day: this.form.value.onDay
-      },
-      onThe: {
-        which:  this.form.value.onTheWhich,
-        day:  this.form.value.onTheDay
-      }
+    if (this.propagateChange) {
+      this.propagateChange(this.form.value);
     }
-    this.propagateChange(params);
     this.onChange.emit();
   }
 

@@ -1,7 +1,7 @@
 import { rrulestr as RRuleObjectFromString } from 'rrule';
 import * as momentImported from 'moment'; const moment = momentImported;
 
-import { DATE_TIME_FORMAT } from '../../../constants/index';
+import { DATE_TIME_FORMAT } from '../constant';
 import computeStartOnDate from './computeStartOnDate';
 import computeFrequency from './computeFrequency';
 import computeYearlyMode from './computeYearlyMode';
@@ -24,7 +24,7 @@ import computeEndMode from './computeEndMode';
 import computeEndAfter from './computeEndAfter';
 import computeEndOnDate from './computeEndOnDate';
 
-const computeRRule = (data, rrule) => {
+export const computeRRule = (data, rrule) => {
   if (!rrule) {
     return data;
   }
@@ -112,4 +112,3 @@ const computeRRule = (data, rrule) => {
   return newDataObj;
 };
 
-export default computeRRule;

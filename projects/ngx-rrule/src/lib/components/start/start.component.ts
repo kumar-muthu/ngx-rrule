@@ -1,6 +1,7 @@
 import {Component, OnInit, Output, forwardRef, EventEmitter} from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
+import {getDateParts} from '../../util/common';
 
 @Component({
   selector: 'ngx-start',
@@ -20,7 +21,7 @@ export class StartComponent implements OnInit, ControlValueAccessor {
   }
 
   writeValue = (input: any): void => {
-    this.startDate = input;
+    this.startDate = getDateParts(new Date(input.onDate.date));
   }
 
   registerOnChange(fn: any): void {

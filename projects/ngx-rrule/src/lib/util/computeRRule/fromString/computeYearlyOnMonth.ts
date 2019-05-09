@@ -1,4 +1,4 @@
-import { MONTHS } from '../../../constants/index';
+import { MONTHS } from '../constant';
 
 const computeYearlyOnMonth = (data, rruleObj) => {
   if (rruleObj.freq !== 0 || !rruleObj.bymonthday) {

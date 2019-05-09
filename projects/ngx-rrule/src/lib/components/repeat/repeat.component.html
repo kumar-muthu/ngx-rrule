@@ -4,11 +4,11 @@
     <input aria-label="Repeat interval" class="form-control w-25" value="1" formControlName="interval" >
 
     <select formControlName="frequency" (change)="onOptionChange()" class="form-control mt-md-0 mt-sm-2">
-      <option value="Yearly">Year</option>
-      <option value="Monthly">Month</option>
-      <option value="Weekly">Week</option>
-      <option value="Daily">Day</option>
-      <option value="Hourly">Hour</option>
+      <option value="Yearly" *ngIf="!frequency || frequency.indexOf('Yearly') !== -1">Year</option>
+      <option value="Monthly" *ngIf="!frequency || frequency.indexOf('Monthly') !== -1">Month</option>
+      <option value="Weekly" *ngIf="!frequency || frequency.indexOf('Weekly') !== -1">Week</option>
+      <option value="Daily" *ngIf="!frequency || frequency.indexOf('Daily') !== -1">Day</option>
+      <option value="Hourly" *ngIf="!frequency || frequency.indexOf('Hourly') !== -1">Hour</option>
     </select>
 
   </div>

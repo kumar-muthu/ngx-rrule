@@ -4,25 +4,28 @@
         <div class="form-group col-lg-12">
           <input type="radio" aria-label="Repeat yearly on" value="on" formControlName="mode">
           <label class="ml-2">on</label>
-          <select formControlName="onMonth" aria-label="Repeat yearly on month" class="form-control"
-                  [attr.disabled]="form.value.mode !== 'on'? '' : null">
-            <option value="Jan">Jan</option>
-            <option value="Feb">Feb</option>
-            <option value="Mar">Mar</option>
-            <option value="Apr">Apr</option>
-            <option value="May">May</option>
-            <option value="Jun">Jun</option>
-            <option value="Jul">Jul</option>
-            <option value="Aug">Aug</option>
-            <option value="Sep">Sep</option>
-            <option value="Oct">Oct</option>
-            <option value="Nov">Nov</option>
-            <option value="Dec">Dec</option>
-          </select>
-          <select formControlName="onDay" aria-label="Repeat yearly on a day" class="form-control"
-                  [attr.disabled]="form.value.mode !== 'on'? '' : null">
-            <option *ngFor="let val of range(1, 32)" [value]="val.toString()">{{val}}</option>
-          </select>
+          <div  formGroupName="on">
+            <select formControlName="month" aria-label="Repeat yearly on month" class="form-control"
+                    [attr.disabled]="form.value.mode !== 'on'? '' : null">
+              <option value="Jan">Jan</option>
+              <option value="Feb">Feb</option>
+              <option value="Mar">Mar</option>
+              <option value="Apr">Apr</option>
+              <option value="May">May</option>
+              <option value="Jun">Jun</option>
+              <option value="Jul">Jul</option>
+              <option value="Aug">Aug</option>
+              <option value="Sep">Sep</option>
+              <option value="Oct">Oct</option>
+              <option value="Nov">Nov</option>
+              <option value="Dec">Dec</option>
+            </select>
+            <select formControlName="day" aria-label="Repeat yearly on a day" class="form-control"
+                    [attr.disabled]="form.value.mode !== 'on'? '' : null">
+              <option *ngFor="let val of range(1, 32)" [value]="val.toString()">{{val}}</option>
+            </select>
+          </div>
+
         </div>
       </div>
     </div>
@@ -31,7 +34,8 @@
       <div class="col-md-12 form-group">
         <input type="radio" value="on the" formControlName="mode">
         <label class="ml-2">on the</label>
-        <select formControlName="onTheWhich" aria-label="Repeat yearly on the which" class="form-control"
+        <div formGroupName="onThe">
+        <select formControlName="which" aria-label="Repeat yearly on the which" class="form-control"
                 [attr.disabled]="form.value.mode === 'on'? '' : null">
           <option value="First">First</option>
           <option value="Second">Second</option>
@@ -40,7 +44,7 @@
           <option value="Last">Last</option>
         </select>
 
-        <select formControlName="onTheDay" aria-label="Repeat yearly on the day" class="form-control"
+        <select  formControlName="day" aria-label="Repeat yearly on the day" class="form-control"
                 [attr.disabled]="form.value.mode === 'on'? '' : null">
           <option value="Monday">Monday</option>
           <option value="Tuesday">Tuesday</option>
@@ -53,8 +57,10 @@
           <option value="Weekday">Weekday</option>
           <option value="Weekend day">Weekend day</option>
         </select>
+        </div>
         <label class="ml-1 mr-1">of</label>
-        <select formControlName="onTheMonth" aria-label="Repeat yearly on the month" class="form-control"
+        <div formGroupName="onThe">
+        <select  formControlName="month" aria-label="Repeat yearly on the month" class="form-control"
                 [attr.disabled]="form.value.mode === 'on'? '' : null">
           <option value="Jan">Jan</option>
           <option value="Feb">Feb</option>
@@ -69,6 +75,7 @@
           <option value="Nov">Nov</option>
           <option value="Dec">Dec</option>
         </select>
+        </div>
       </div>
     </div>
   </div>

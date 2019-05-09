@@ -39,7 +39,7 @@ export class WeeklyComponent implements OnInit, ControlValueAccessor {
 
 
   writeValue = (input: any): void => {
-    this.weeklyForm.patchValue(input);
+    this.weeklyForm.patchValue({...input.days, weeklyInterval: input.interval});
   }
 
   registerOnChange(fn: any): void {
@@ -57,7 +57,7 @@ export class WeeklyComponent implements OnInit, ControlValueAccessor {
       };
 
       value.interval = this.weeklyForm.value.weeklyInterval;
-      value.days = this.weeklyForm.value;
+      value.days = _.omit(this.weeklyForm.value, ['weeklyInterval']);
       this.propagateChange(value);
       this.onChange.emit();
     }

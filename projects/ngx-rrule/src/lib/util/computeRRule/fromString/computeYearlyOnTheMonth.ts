@@ -1,4 +1,4 @@
-import { MONTHS } from '../../../constants/index';
+import { MONTHS } from '../constant';
 
 const computeYearlyOnTheMonth = (data, rruleObj) => {
   if (rruleObj.freq !== 0 || !rruleObj.byweekday) {
@@ -6,7 +6,7 @@ const computeYearlyOnTheMonth = (data, rruleObj) => {
   }
 
   if (typeof rruleObj.bymonth === 'number') {
-    return MONTHS[rruleObj.bymonth - 1]
+    return MONTHS[rruleObj.bymonth - 1];
   }
 
   return MONTHS[rruleObj.bymonth[0] - 1];
