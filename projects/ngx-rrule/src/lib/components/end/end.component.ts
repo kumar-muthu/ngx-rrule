@@ -1,7 +1,7 @@
 import {Component, OnInit, Output, forwardRef, EventEmitter} from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
-import {getDateParts} from "../../util/common";
+import {getDateParts, getDateFromParts} from '../../util/common';
 
 @Component({
   selector: 'ngx-end',
@@ -51,7 +51,7 @@ export class EndComponent implements OnInit, ControlValueAccessor {
 
   onFormChange = () => {
     const endAt = this.form.value.endAt;
-    const param = { ...this.form.value, date: new Date(endAt.year, endAt.month, endAt.day) };
+    const param = { ...this.form.value, date: getDateFromParts(endAt) };
     this.propagateChange(param);
     this.onChange.emit();
   }

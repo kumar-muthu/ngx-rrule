@@ -20,7 +20,7 @@ export class AppComponent implements OnInit {
     this.lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
 
     this.form = this.formBuilder.group({
-      testRule: 'DTSTART:20190508T183000Z RRULE:FREQ=WEEKLY;INTERVAL=2;BYDAY=WE,FR',
+      testRule: 'DTSTART:20190502T000000Z RRULE:FREQ=MONTHLY;INTERVAL=2;BYSETPOS=-1;BYDAY=-1MO;UNTIL=20190831T000000Z',
     });
 
     this.form.valueChanges.subscribe(() => {

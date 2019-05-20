@@ -1,7 +1,7 @@
 import {Component, OnInit, Output, forwardRef, EventEmitter} from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
-import {getDateParts} from '../../util/common';
+import {getDateParts, getDateFromParts} from '../../util/common';
 
 @Component({
   selector: 'ngx-start',
@@ -32,7 +32,7 @@ export class StartComponent implements OnInit, ControlValueAccessor {
   }
 
   onFormChange = () => {
-    this.propagateChange(new Date(this.startDate.year, this.startDate.month, this.startDate.day));
+    this.propagateChange(getDateFromParts(this.startDate));
     this.onChange.emit();
   }
 }
