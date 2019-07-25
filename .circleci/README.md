@@ -1,6 +1,6 @@
 # git pages
-* npx angular-cli-ghpages --dir=dist/tester/
 * ng build --project tester --prod --base-href "https://kumar-muthu.github.io/ngx-rrule/"
+* npx angular-cli-ghpages --dir=dist/tester/
 
 # local debug
 * ng build --project ngx-rrule --watch
