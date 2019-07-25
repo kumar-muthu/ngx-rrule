@@ -22,6 +22,9 @@ export class StartComponent implements OnInit, ControlValueAccessor {
 
   writeValue = (input: any): void => {
     this.startDate = getDateParts(new Date(input.onDate.date));
+    setTimeout(() => {
+      this.onFormChange();
+    }, 100);
   }
 
   registerOnChange(fn: any): void {
@@ -32,7 +35,9 @@ export class StartComponent implements OnInit, ControlValueAccessor {
   }
 
   onFormChange = () => {
-    this.propagateChange(getDateFromParts(this.startDate));
+    if (this.propagateChange) {
+      this.propagateChange(getDateFromParts(this.startDate));
+    }
     this.onChange.emit();
   }
 }
