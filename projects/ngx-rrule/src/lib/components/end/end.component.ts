@@ -51,7 +51,7 @@ export class EndComponent implements OnInit, ControlValueAccessor {
 
   onFormChange = () => {
     const endAt = this.form.value.endAt;
-    const param = { ...this.form.value, date: getDateFromParts(endAt) };
+    const param = { ...this.form.value, date: getDateFromParts(endAt).setUTCHours(23, 59, 59, 999) };
     this.propagateChange(param);
     this.onChange.emit();
   }
