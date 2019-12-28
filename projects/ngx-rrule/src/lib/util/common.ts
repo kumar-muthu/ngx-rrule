@@ -1,3 +1,5 @@
+import * as moment from 'moment';
+
 export const getDateParts = (date: Date) => {
   return date ? {
     year: date.getFullYear(),
@@ -7,5 +9,5 @@ export const getDateParts = (date: Date) => {
 }
 
 export const getDateFromParts = (date) => {
-  return date ? new Date(Date.UTC(date.year, date.month - 1, date.day)) : null;
+  return moment.utc(date).startOf('day').toDate();
 }

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { NgxRruleComponent } from './ngx-rrule.component';
 import { StartComponent } from './components/start/start.component';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {NgbDateAdapter, NgbDateNativeAdapter, NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EndComponent } from './components/end/end.component';
 import { RepeatComponent } from './components/repeat/repeat.component';
@@ -17,6 +17,9 @@ import {BrowserModule} from "@angular/platform-browser";
     FormsModule,
     ReactiveFormsModule,
     NgbModule
+  ],
+  providers: [
+    { provide: NgbDateAdapter, useClass: NgbDateNativeAdapter},
   ],
   exports: [NgxRruleComponent]
 })
