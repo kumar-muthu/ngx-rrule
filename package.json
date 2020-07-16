@@ -22,7 +22,7 @@
     "@ng-bootstrap/ng-bootstrap": "^4.2.2",
     "bootstrap": "^4.4.1",
     "core-js": "^2.6.11",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "moment": "^2.24.0",
     "ngx-bootstrap": "^4.3.0",
     "rrule": "^2.6.4",
