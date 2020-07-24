@@ -1,5 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import {FormBuilder} from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -7,13 +7,15 @@ import {FormBuilder} from '@angular/forms';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  form;
-  value;
+
+  form: FormGroup;
   rRule;
 
   firstDay;
   lastDay;
-  constructor(private formBuilder: FormBuilder) {}
+
+  constructor(private formBuilder: FormBuilder) { }
+
   ngOnInit() {
     const date = new Date();
     this.firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
@@ -27,4 +29,13 @@ export class AppComponent implements OnInit {
       this.rRule = this.form.value.testRule.rRule;
     });
   }
+
+  rruleChange(e) {
+    const rrule = e.target.value;
+    this.form.setValue({
+      testRule:
+        rrule
+    });
+  }
+
 }
