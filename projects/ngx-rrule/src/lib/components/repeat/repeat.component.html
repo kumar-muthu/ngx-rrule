@@ -1,7 +1,7 @@
 <form [formGroup]="form">
   <div class="row col-lg-12 form-inline">
     <label class="mr-2">Repeat every</label>
-    <input aria-label="Repeat interval" class="form-control w-25" value="1" formControlName="interval" >
+    <input aria-label="Repeat interval" class="form-control w-25" value="1" formControlName="interval">
 
     <select formControlName="frequency" (change)="onOptionChange()" class="form-control mt-md-0 mt-sm-2">
       <option value="Yearly" *ngIf="!frequency || frequency.indexOf('Yearly') !== -1">Year</option>

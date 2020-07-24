@@ -1,7 +1,6 @@
 import {Component, OnInit, Output, forwardRef, EventEmitter} from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
-import {getDateParts, getDateFromParts} from '../../util/common';
 
 @Component({
   selector: 'ngx-end',
@@ -38,7 +37,7 @@ export class EndComponent implements OnInit, ControlValueAccessor {
   writeValue = (input: any): void => {
     this.form.patchValue({
       ...input,
-      endAt: getDateParts(new Date(input.onDate.date))
+      endAt: new Date(input.onDate.date)
     });
   }
 
@@ -51,7 +50,7 @@ export class EndComponent implements OnInit, ControlValueAccessor {
 
   onFormChange = () => {
     const endAt = this.form.value.endAt;
-    const param = { ...this.form.value, date: getDateFromParts(endAt).setUTCHours(23, 59, 59, 999) };
+    const param = { ...this.form.value, date: endAt.setUTCHours(23, 59, 59, 999) };
     this.propagateChange(param);
     this.onChange.emit();
   }

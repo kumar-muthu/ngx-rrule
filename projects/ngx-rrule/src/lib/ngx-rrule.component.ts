@@ -1,17 +1,17 @@
-import {Component, forwardRef, Input, OnInit} from '@angular/core';
-import {ControlValueAccessor, FormBuilder, FormGroup, NG_VALUE_ACCESSOR} from '@angular/forms';
-import {NgxRruleService} from './ngx-rrule.service';
-import {computeRRule} from '../lib/util/computeRRule/fromString/computeRRule';
+import { Component, forwardRef, Input, OnInit } from '@angular/core';
+import { ControlValueAccessor, FormBuilder, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { NgxRruleService } from './ngx-rrule.service';
+import { computeRRule } from '../lib/util/computeRRule/fromString/computeRRule';
 import * as moment_ from 'moment';
-import {getDateParts} from '../lib/util/common';
+import { getDateParts } from '../lib/util/common';
 
 const moment = moment_;
-import {DATE_TIME_FORMAT} from './util/computeRRule/constant';
+import { DATE_TIME_FORMAT } from './util/computeRRule/constant';
 @Component({
   selector: 'ngx-rrule',
   templateUrl: './ngx-rrule.component.html',
   styles: [],
-  providers: [{provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => NgxRruleComponent), multi: true}]
+  providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => NgxRruleComponent), multi: true }]
 })
 export class NgxRruleComponent implements OnInit, ControlValueAccessor {
   @Input() hideStart = false;
@@ -22,7 +22,7 @@ export class NgxRruleComponent implements OnInit, ControlValueAccessor {
   public form: FormGroup;
   private propagateChange;
   constructor(private formBuilder: FormBuilder,
-              private  service: NgxRruleService) {}
+    private service: NgxRruleService) { }
 
   ngOnInit() {
     const params: any = {
@@ -127,8 +127,8 @@ export class NgxRruleComponent implements OnInit, ControlValueAccessor {
         onDate: {
           date: moment().format(DATE_TIME_FORMAT),
           options: {
-           // weekStartsOnSunday: config.weekStartsOnSunday,
-           // calendarComponent,
+            // weekStartsOnSunday: config.weekStartsOnSunday,
+            // calendarComponent,
           },
         },
         options: {
@@ -166,7 +166,7 @@ export class NgxRruleComponent implements OnInit, ControlValueAccessor {
       if (this.hideEnd && !this.endAt) {
         params.end = null;
       }
-      rRule = this.service.computeRRule({...params, options: {}});
+      rRule = this.service.computeRRule({ ...params, options: {} });
     } catch (err) {
       console.error(err);
     }

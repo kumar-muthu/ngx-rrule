@@ -3,7 +3,8 @@
   <div class="card">
     <div class="card-body">
       <form [formGroup]="form">
-        <ngx-rrule formControlName="testRule" [hideStart]="false" [hideEnd]="false" [frequency]="['Daily','Monthly','Weekly', 'Yearly']"></ngx-rrule>
+        <ngx-rrule formControlName="testRule" [hideStart]="true" [hideEnd]="false"
+          [frequency]="['Daily','Monthly','Weekly', 'Yearly']"></ngx-rrule>
       </form>
     </div>
   </div>
@@ -13,13 +14,22 @@
     </div>
     <div class="card-body">
       <div class="px-1 pt-3">
+
+        <div class="form-group row d-flex align-items-sm-center">
+          <div class="col-sm-2 text-sm-right">
+            <span class="col-form-label"><strong>RRule Input</strong></span></div>
+          <div class="col-sm-8">
+            <input class="form-control" (change)="rruleChange($event)">
+          </div>
+        </div>
+
         <div class="form-group row d-flex align-items-sm-center">
           <div class="col-sm-2 text-sm-right">
             <span class="col-form-label"><strong>RRule String</strong></span></div>
           <div class="col-sm-8">
-        <textarea class="form-control rrule rrule-not-copied" readonly="" rows="5"
-                  style="overflow: hidden; overflow-wrap: break-word; resize: none;">{{rRule?.toString()?.trim()}}
-        </textarea>
+            <textarea class="form-control rrule rrule-not-copied" readonly="" rows="5"
+              style="overflow: hidden; overflow-wrap: break-word; resize: none;">{{rRule?.toString()?.trim()}}
+            </textarea>
           </div>
         </div>
 
@@ -27,13 +37,12 @@
           <div class="col-sm-2 text-sm-right">
             <span class="col-form-label"><strong>RRule Text</strong></span></div>
           <div class="col-sm-8">
-        <textarea class="form-control rrule rrule-not-copied" readonly="" rows="5"
-                  style="overflow: hidden; overflow-wrap: break-word; resize: none;">{{rRule?.toText()?.trim()}}
-        </textarea>
+            <textarea class="form-control rrule rrule-not-copied" readonly="" rows="5"
+              style="overflow: hidden; overflow-wrap: break-word; resize: none;">{{rRule?.toText()?.trim()}} 
+            </textarea>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-
