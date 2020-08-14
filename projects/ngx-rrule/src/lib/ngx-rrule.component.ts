@@ -1,24 +1,22 @@
-import { Component, forwardRef, Input, OnInit } from '@angular/core';
+import {Component, forwardRef, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import { ControlValueAccessor, FormBuilder, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { NgxRruleService } from './ngx-rrule.service';
 import { computeRRule } from '../lib/util/computeRRule/fromString/computeRRule';
-import * as moment_ from 'moment';
-import { getDateParts } from '../lib/util/common';
+import {formatDate, getDateParts} from '../lib/util/common';
 
-const moment = moment_;
-import { DATE_TIME_FORMAT } from './util/computeRRule/constant';
 @Component({
   selector: 'ngx-rrule',
   templateUrl: './ngx-rrule.component.html',
   styles: [],
   providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => NgxRruleComponent), multi: true }]
 })
-export class NgxRruleComponent implements OnInit, ControlValueAccessor {
+export class NgxRruleComponent implements OnInit, OnChanges, ControlValueAccessor {
   @Input() hideStart = false;
   @Input() hideEnd = false;
   @Input() startAt;
   @Input() endAt;
   @Input() frequency;
+  @Input() tz;
   public form: FormGroup;
   private propagateChange;
   constructor(private formBuilder: FormBuilder,
@@ -35,12 +33,20 @@ export class NgxRruleComponent implements OnInit, ControlValueAccessor {
 
 
     if (this.endAt) {
-      params.end.endAt = getDateParts(this.endAt);
-      params.end.mode = 'On date';
+      params.end = {
+        mode: 'On date',
+        onDate: {
+          date: getDateParts(this.endAt)
+        }
+      }
     }
 
     if (this.startAt) {
-      params.start = getDateParts(this.startAt);
+      params.start = {
+        onDate: {
+          date: getDateParts(this.startAt)
+        }
+      }
     }
 
     this.form = this.formBuilder.group(params);
@@ -61,7 +67,7 @@ export class NgxRruleComponent implements OnInit, ControlValueAccessor {
     const init_data = {
       start: {
         onDate: {
-          date: moment().format(DATE_TIME_FORMAT),
+          date: formatDate(new Date()),
           options: {},
         },
       },
@@ -125,7 +131,7 @@ export class NgxRruleComponent implements OnInit, ControlValueAccessor {
         mode: configureEnd(),
         after: 1,
         onDate: {
-          date: moment().format(DATE_TIME_FORMAT),
+          date: formatDate(new Date()),
           options: {
             // weekStartsOnSunday: config.weekStartsOnSunday,
             // calendarComponent,
@@ -166,7 +172,7 @@ export class NgxRruleComponent implements OnInit, ControlValueAccessor {
       if (this.hideEnd && !this.endAt) {
         params.end = null;
       }
-      rRule = this.service.computeRRule({ ...params, options: {} });
+      rRule = this.service.computeRRule({ ...params, options: {tz: this.tz} });
     } catch (err) {
       console.error(err);
     }
@@ -176,5 +182,11 @@ export class NgxRruleComponent implements OnInit, ControlValueAccessor {
         rRule
       });
     }
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    setTimeout(() => {
+      this.onFormChange();
+    }, 10)
   }
 }

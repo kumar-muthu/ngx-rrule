@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-root',
@@ -7,22 +8,22 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-
   form: FormGroup;
   rRule;
+  testRule;
 
-  firstDay;
-  lastDay;
+  hideStart = false;
+  hideEnd = false;
+  timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
   constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit() {
-    const date = new Date();
-    this.firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
-    this.lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
-
+    const startDate = moment().startOf('month').startOf('day').format('YYYYMMDD');
+    const endDate = moment().endOf('month').endOf('day').format('YYYYMMDD');
+    this.testRule = `DTSTART:${startDate}T000000 RRULE:FREQ=MONTHLY;INTERVAL=2;BYSETPOS=-1;BYDAY=-1MO;UNTIL=${endDate}T000000`;
     this.form = this.formBuilder.group({
-      testRule: 'DTSTART:20190502T000000Z RRULE:FREQ=MONTHLY;INTERVAL=2;BYSETPOS=-1;BYDAY=-1MO;UNTIL=20190831T000000Z',
+      testRule: this.testRule
     });
 
     this.form.valueChanges.subscribe(() => {
@@ -32,9 +33,9 @@ export class AppComponent implements OnInit {
 
   rruleChange(e) {
     const rrule = e.target.value;
-    this.form.setValue({
-      testRule:
-        rrule
+    console.log(rrule);
+    this.form.patchValue({
+      testRule: rrule
     });
   }
 

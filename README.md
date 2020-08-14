@@ -20,7 +20,7 @@ It also uses:
 https://kumar-muthu.github.io/ngx-rrule/
 
 ## Installation and Docs
-Todo
+Rrule is stored always in local timezone. Its best to explicitly specify the timezone in the rrule for reference. If no timezone is specified it can be assumed as UTC.
 
 ## License 
 MIT

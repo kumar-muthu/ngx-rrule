@@ -7,5 +7,6 @@
 * ng serve --project tester --vendor-source-map
 
 # publish npm
+* ng build --project ngx-rrule --prod
 * cd dist/ngx-rrule
 * npm publish

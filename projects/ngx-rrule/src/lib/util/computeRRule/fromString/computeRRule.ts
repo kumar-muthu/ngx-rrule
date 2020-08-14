@@ -1,5 +1,4 @@
 import { rrulestr as RRuleObjectFromString } from 'rrule';
-import * as momentImported from 'moment'; const moment = momentImported;
 
 import { DATE_TIME_FORMAT } from '../constant';
 import computeStartOnDate from './computeStartOnDate';
@@ -23,6 +22,7 @@ import computeHourlyInterval from './computeHourlyInterval';
 import computeEndMode from './computeEndMode';
 import computeEndAfter from './computeEndAfter';
 import computeEndOnDate from './computeEndOnDate';
+import {formatDate} from "../../common";
 
 export const computeRRule = (data, rrule) => {
   if (!rrule) {
@@ -31,77 +31,76 @@ export const computeRRule = (data, rrule) => {
 
   let newDataObj;
   try {
-    const rruleObj = RRuleObjectFromString(rrule).origOptions;
-
+    const rruleOrigOptions = RRuleObjectFromString(rrule).origOptions;
     newDataObj = {
       ...data,
       start: {
         ...data.start,
         onDate: {
-          date: moment(computeStartOnDate(data, rruleObj)).format(DATE_TIME_FORMAT),
+          date: formatDate(computeStartOnDate(data, rruleOrigOptions)),
           options: {
             ...data.start.onDate.options,
-            weekStartsOnSunday: computeWeekStartDay(data, rruleObj),
+            weekStartsOnSunday: computeWeekStartDay(data, rruleOrigOptions),
           },
         },
       },
       repeat: {
         ...data.repeat,
-        frequency: computeFrequency(data, rruleObj),
+        frequency: computeFrequency(data, rruleOrigOptions),
         yearly: {
           ...data.repeat.yearly,
-          mode: computeYearlyMode(data, rruleObj),
+          mode: computeYearlyMode(data, rruleOrigOptions),
           on: {
-            month: computeYearlyOnMonth(data, rruleObj),
-            day: computeYearlyOnMonthday(data, rruleObj),
+            month: computeYearlyOnMonth(data, rruleOrigOptions),
+            day: computeYearlyOnMonthday(data, rruleOrigOptions),
           },
           onThe: {
-            month: computeYearlyOnTheMonth(data, rruleObj),
-            day: computeYearlyOnTheMonthday(data, rruleObj),
-            which: computeYearlyOnTheWhich(data, rruleObj),
+            month: computeYearlyOnTheMonth(data, rruleOrigOptions),
+            day: computeYearlyOnTheMonthday(data, rruleOrigOptions),
+            which: computeYearlyOnTheWhich(data, rruleOrigOptions),
           },
         },
         monthly: {
           ...data.repeat.monthly,
-          mode: computeMonthlyMode(data, rruleObj),
-          interval: computeMonthlyInterval(data, rruleObj),
+          mode: computeMonthlyMode(data, rruleOrigOptions),
+          interval: computeMonthlyInterval(data, rruleOrigOptions),
           on: {
-            day: computeMonthlyOnDay(data, rruleObj),
+            day: computeMonthlyOnDay(data, rruleOrigOptions),
           },
           onThe: {
-            day: computeMonthlyOnTheDay(data, rruleObj),
-            which: computeMonthlyOnTheWhich(data, rruleObj),
+            day: computeMonthlyOnTheDay(data, rruleOrigOptions),
+            which: computeMonthlyOnTheWhich(data, rruleOrigOptions),
           },
         },
         weekly: {
-          interval: computeWeeklyInterval(data, rruleObj),
-          days: computeWeeklyDays(data, rruleObj),
+          interval: computeWeeklyInterval(data, rruleOrigOptions),
+          days: computeWeeklyDays(data, rruleOrigOptions),
           options: {
-            weekStartsOnSunday: computeWeekStartDay(data, rruleObj),
+            weekStartsOnSunday: computeWeekStartDay(data, rruleOrigOptions),
           },
         },
         daily: {
-          interval: computeDailyInterval(data, rruleObj),
+          interval: computeDailyInterval(data, rruleOrigOptions),
         },
         hourly: {
-          interval: computeHourlyInterval(data, rruleObj),
+          interval: computeHourlyInterval(data, rruleOrigOptions),
         },
       },
       end: {
         ...data.end,
-        mode: computeEndMode(data, rruleObj),
-        after: computeEndAfter(data, rruleObj),
+        mode: computeEndMode(data, rruleOrigOptions),
+        after: computeEndAfter(data, rruleOrigOptions),
         onDate: {
-          date: moment(computeEndOnDate(data, rruleObj)).format(DATE_TIME_FORMAT),
+          date: formatDate(computeEndOnDate(data, rruleOrigOptions)),
           options: {
             ...data.end.onDate.options,
-            weekStartsOnSunday: computeWeekStartDay(data, rruleObj),
+            weekStartsOnSunday: computeWeekStartDay(data, rruleOrigOptions),
           },
         },
       },
       options: {
         ...data.options,
-        weekStartsOnSunday: computeWeekStartDay(data, rruleObj),
+        weekStartsOnSunday: computeWeekStartDay(data, rruleOrigOptions),
       },
       error: null,
     };

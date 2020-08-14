@@ -1,18 +1,17 @@
-import * as momentImported from 'moment'; const moment = momentImported;
+import {getDateParts, isValidDate} from '../../common'
 
 const computeStart = (date) => {
-  // verify that incoming date is valid
-  // by seeing if it can be converted into a moment object.
-  // if not, then create a new date
-  const start: any = {};
+  let start: any = {};
 
   if (date) {
-    if (!moment.isMoment(moment(date))) {
-      date = new Date().setMilliseconds(0);
+    if (!date.onDate || !isValidDate(date.onDate.date)) {
+      start = new Date().setMilliseconds(0);
+    } else {
+      start = date.onDate.date;
     }
-
+    const dateParts = getDateParts(start);
     return {
-      dtstart: moment(date).toDate(),
+      dtstart: new Date(Date.UTC(dateParts.year, dateParts.month - 1, dateParts.day, 0, 0))
     };
   }
 
