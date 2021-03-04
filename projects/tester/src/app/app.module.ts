@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { NgxRruleModule } from 'ngx-rrule';
 import { AppComponent } from './app.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -12,7 +13,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    NgxRruleModule
+    NgxRruleModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

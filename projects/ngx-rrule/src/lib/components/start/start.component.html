@@ -1,5 +1,5 @@
 <form [formGroup]="form" class="form-inline">
   <label for="inlineFormInputName2" class="mr-1">Start</label>
-  <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" formControlName="startDate" placeholder="Start Date"
+  <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" [minDate]="minStartDate" [maxDate]="maxStartDate" formControlName="startDate" placeholder="Start Date"
          name="dp" ngbDatepicker #d="ngbDatepicker" (click)="d.toggle()">
 </form>

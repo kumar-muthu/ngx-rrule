@@ -1,4 +1,4 @@
-import {Component, OnInit, Output, forwardRef, EventEmitter} from '@angular/core';
+import {Component, OnInit, Output, forwardRef, EventEmitter, Input} from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {getDateParts} from "../../util/common";
@@ -11,6 +11,11 @@ import {getDateParts} from "../../util/common";
 })
 export class EndComponent implements OnInit, ControlValueAccessor {
   @Output() onChange = new EventEmitter();
+  @Output() onEndDateChange = new EventEmitter<any>();
+
+  @Input() minEndDate;
+  @Input() maxEndDate;
+
   public form: FormGroup;
   private propagateChange;
 
@@ -26,6 +31,11 @@ export class EndComponent implements OnInit, ControlValueAccessor {
       endAt: {month, day, year},
       mode: 'Never'
     });
+
+    this.form.get('endAt').valueChanges.subscribe(x => {
+      this.onEndDateChange.emit(x);
+    });
+    
 
     setTimeout(() => {
       this.form.valueChanges.subscribe(() => {

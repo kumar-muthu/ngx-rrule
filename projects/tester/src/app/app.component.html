@@ -30,6 +30,12 @@
                        [hideStart]="hideStart"
                        [hideEnd]="hideEnd"
                        [tz]="timeZone"
+                       [minStartDate]="minStartDate"
+                       [maxStartDate]="maxStartDate"
+                       [minEndDate]="minEndDate"
+                       [maxEndDate]="maxEndDate"
+                       (onStartDateChange)="onStartDateChange($event)"
+                       (onEndDateChange)="onEndDateChange($event)"
                        [frequency]="['Daily','Monthly','Weekly', 'Yearly']"></ngx-rrule>
           </form>
         </div>
@@ -48,6 +54,42 @@
               Hide End
             </label>
           </div>
+
+          <div class="form-check">
+            <label class="form-check-label" for="minStartDateId">
+              Min Start Date
+            </label>
+            <input  class="form-control ml-2" id="minStartDateId" [(ngModel)]="minStartDateText" placeholder="yyyy-mm-dd"
+              ngbDatepicker #d="ngbDatepicker" (click)="d.toggle()" (ngModelChange)="dateSelection(minStartDateText,'minStartDate')">
+          </div>
+
+          <div class="form-check">
+           
+            <label class="form-check-label" for="maxStartDateId">
+              Max Start Date
+            </label>
+            <input  class="form-control ml-2" id="maxStartDateId" [(ngModel)]="maxStartDateText" placeholder="yyyy-mm-dd"
+            ngbDatepicker #d1="ngbDatepicker" (click)="d1.toggle()" (ngModelChange)="dateSelection(maxStartDateText,'maxStartDate')">
+          </div>
+
+          <div class="form-check">
+           
+            <label class="form-check-label" for="minEndDateId">
+              Min End Date
+            </label>
+            <input  class="form-control ml-2" id="minEndDateId" [(ngModel)]="minEndDateText" placeholder="yyyy-mm-dd"
+            ngbDatepicker #d2="ngbDatepicker" (click)="d2.toggle()" (ngModelChange)="dateSelection(minEndDateText,'minEndDate')">
+          </div>
+
+          <div class="form-check">
+            
+            <label class="form-check-label" for="maxEndDateId">
+              Max End Date
+            </label>
+            <input  class="form-control ml-2" id="maxEndDateId" [(ngModel)]="maxEndDateText" placeholder="yyyy-mm-dd"
+              ngbDatepicker #d3="ngbDatepicker" (click)="d3.toggle()" (ngModelChange)="dateSelection(maxEndDateText,'maxEndDate')">
+          </div>
+
           <div>
             <label class="form-check-label" for="checkHideStart">
               TimeZone
