@@ -16,6 +16,16 @@ export class AppComponent implements OnInit {
   hideEnd = false;
   timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
+  minStartDate;
+  maxStartDate;
+  minEndDate;
+  maxEndDate;
+
+  minStartDateText;
+  maxStartDateText;
+  minEndDateText;
+  maxEndDateText;
+
   constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit() {
@@ -29,6 +39,33 @@ export class AppComponent implements OnInit {
     this.form.valueChanges.subscribe(() => {
       this.rRule = this.form.value.testRule.rRule;
     });
+  }
+
+  onStartDateChange(e){
+    console.log(e);
+  }
+
+  onEndDateChange(e){
+    console.log(e);
+  }
+
+  dateSelection(date, dt) {
+    if (date) {
+      const minDate = new Date(date);
+      const dateConfig = {
+        year: minDate.getFullYear(),
+        month: minDate.getMonth() + 1,
+        day: minDate.getDate()
+      };
+      if(dt=='minStartDate')
+        this.minStartDate = dateConfig;
+      else if(dt=='maxStartDate')
+        this.maxStartDate = dateConfig;
+      else if (dt == 'minEndDate')
+        this.minEndDate = dateConfig;
+      else if (dt == 'maxEndDate')
+        this.maxEndDate = dateConfig;
+    }
   }
 
   rruleChange(e) {

@@ -1,4 +1,4 @@
-import {Component, forwardRef, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {Component, EventEmitter, forwardRef, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 import { ControlValueAccessor, FormBuilder, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { NgxRruleService } from './ngx-rrule.service';
 import { computeRRule } from '../lib/util/computeRRule/fromString/computeRRule';
@@ -17,6 +17,15 @@ export class NgxRruleComponent implements OnInit, OnChanges, ControlValueAccesso
   @Input() endAt;
   @Input() frequency;
   @Input() tz;
+
+  @Input('minStartDate') minStartDate;
+  @Input('maxStartDate') maxStartDate;
+  @Input('minEndDate') minEndDate;
+  @Input('maxEndDate') maxEndDate;
+
+  @Output() onStartDateChange = new EventEmitter<any>();
+  @Output() onEndDateChange = new EventEmitter<any>();
+
   public form: FormGroup;
   private propagateChange;
   constructor(private formBuilder: FormBuilder,
@@ -182,6 +191,14 @@ export class NgxRruleComponent implements OnInit, OnChanges, ControlValueAccesso
         rRule
       });
     }
+  }
+
+  startDateChange(startDate){
+    this.onStartDateChange.emit(startDate);
+  }
+
+  endDateChange(endDate){
+    this.onStartDateChange.emit(endDate);
   }
 
   ngOnChanges(changes: SimpleChanges) {

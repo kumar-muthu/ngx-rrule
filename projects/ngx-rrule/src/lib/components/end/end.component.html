@@ -15,7 +15,7 @@
           <label class="ml-1">occurrences</label>
         </div>
       </div>
-      <input  *ngIf="form.value.mode == 'On date'" class="form-control ml-2" formControlName="endAt" placeholder="yyyy-mm-dd"
+      <input  *ngIf="form.value.mode == 'On date'" [minDate]="minEndDate" [maxDate]="maxEndDate" class="form-control ml-2" formControlName="endAt" placeholder="yyyy-mm-dd"
               ngbDatepicker #d="ngbDatepicker" (click)="d.toggle()">
     </div>
   </div>

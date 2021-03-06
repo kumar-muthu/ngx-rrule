@@ -1,4 +1,4 @@
-import {Component, OnInit, Output, forwardRef, EventEmitter} from '@angular/core';
+import {Component, OnInit, Output, forwardRef, EventEmitter, Input} from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {formatDate} from "../../util/common";
@@ -11,6 +11,10 @@ import {formatDate} from "../../util/common";
 })
 export class StartComponent implements OnInit, ControlValueAccessor {
   @Output() onChange = new EventEmitter();
+  @Output() onStartDateChange = new EventEmitter<any>();
+  @Input() minStartDate;
+  @Input() maxStartDate;
+  
   public form: FormGroup;
   public startDate;
   private propagateChange;
@@ -20,6 +24,10 @@ export class StartComponent implements OnInit, ControlValueAccessor {
   ngOnInit() {
     this.form = this.formBuilder.group({
       startDate: ''
+    });
+
+    this.form.get('startDate').valueChanges.subscribe(x => {
+      this.onStartDateChange.emit(x);
     });
 
     setTimeout(() => {
