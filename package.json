@@ -24,7 +24,7 @@
     "bootstrap": "^4.4.1",
     "core-js": "^2.6.11",
     "lodash": "^4.17.15",
-    "moment": "^2.27.0",
+    "moment": "^2.29.4",
     "ngx-bootstrap": "^4.3.0",
     "rrule": "^2.6.4",
     "rxjs": "~6.5.4",
